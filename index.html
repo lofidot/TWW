@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Watch Worthy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-flex">
+        <div class="navbar-left">
+          <a href="https://www.thereadworthy.com/?ref=TWW" class="navbar-link">READS</a>
+        </div>
+        <div class="navbar-center">
+          <a href="https://www.thewatchworthy.com" class="navbar-logo">
+            <svg width="38" height="38" viewBox="0 0 270 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M106.669 16.1229C120.065 -4.49409 150.247 -4.49409 163.643 16.1229V16.1229C171.303 27.9119 185.433 33.7647 199.185 30.8449V30.8449C223.236 25.7387 244.578 47.0807 239.472 71.1313V71.1313C236.552 84.8836 242.405 99.0136 254.194 106.673V106.673C274.811 120.069 274.811 150.251 254.194 163.647V163.647C242.405 171.307 236.552 185.437 239.472 199.189V199.189C244.578 223.24 223.236 244.582 199.185 239.475V239.475C185.433 236.556 171.303 242.408 163.643 254.197V254.197C150.247 274.814 120.065 274.814 106.669 254.197V254.197C99.0097 242.408 84.8797 236.556 71.1274 239.475V239.475C47.0768 244.582 25.7348 223.24 30.841 199.189V199.189C33.7608 185.437 27.908 171.307 16.119 163.647V163.647C-4.498 150.251 -4.498 120.069 16.119 106.673V106.673C27.908 99.0136 33.7608 84.8836 30.841 71.1313V71.1313C25.7348 47.0807 47.0768 25.7387 71.1274 30.8449V30.8449C84.8797 33.7647 99.0097 27.9119 106.669 16.1229V16.1229Z" fill="#42A5F5"/>
+              <path d="M203.656 136.66L95.6562 199.66L95.6562 73.6602L203.656 136.66Z" fill="#E3F2FD"/>
+            </svg>
+          </a>
+        </div>
+        <div class="navbar-right">
+          <a href="https://www.thream.com/?ref=TWW" class="navbar-link">NEWS</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-container">
+      <!-- Video Player Container -->
+      <div id="video-container" class="video-container">
+        <div id="video-backdrop" class="video-backdrop"></div>
+        <div id="video-overlay" class="video-overlay"></div>
+        
+        <div id="player-wrapper" class="player-wrapper">
+          <img id="video-thumbnail" class="video-thumbnail" src="" alt="Video thumbnail">
+          <div id="play-button" class="play-button">
+            <i data-lucide="play" class="play-icon"></i>
+          </div>
+          <div id="video-title-overlay" class="video-title-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Video Information -->
+      <div id="video-info-container" class="video-info-container">
+        <!-- Video Title -->
+        <h1 id="video-title" class="video-title skeleton-loading"></h1>
+        
+        <!-- Channel Info and Controls -->
+        <div class="video-details">
+          <div class="channel-container">
+            <div class="channel-info-and-subscribe">
+              <div class="channel-info">
+                <div class="channel-logo">
+                  <div class="logo-icon-small">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 3l14 9-14 9V3z" fill="currentColor" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="channel-text">
+                  <span id="channel-name" class="channel-name" style="display:none;"></span>
+                  <span class="channel-name-tww">The Watch Worthy</span>
+                  <div class="channel-subscribers">5.79K subscribers</div>
+                </div>
+              </div>
+              <button id="subscribe-button" class="subscribe-button">Subscribe</button>
+            </div>
+            <div class="action-buttons">
+              <button id="about-button" class="action-button">About</button>
+              <button id="more-popup-button" class="action-button">More</button>
+              <button id="share-button-inline" class="action-button">
+                <i data-lucide="share-2" class="icon-small"></i> Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stumble Button -->
+      <div class="stumble-container">
+        <button id="stumble-button" class="stumble-button">Surprise Me!</button>
+      </div>
+    </main>
+
+    <!-- Toast Container for Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Add custom popup modal for Beehiiv -->
+    <div id="beehiiv-modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:8px; padding:24px; max-width:95vw; max-height:95vh; display:flex; flex-direction:column; align-items:center; position:relative;">
+        <button id="close-beehiiv-modal" style="position:absolute; top:8px; right:8px; background:none; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+        <iframe src="https://embeds.beehiiv.com/584c22ec-bf92-4ef5-85cf-8d769d6018e1" data-test-id="beehiiv-embed" width="480" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;"></iframe>
+      </div>
+    </div>
+
+    <!-- About Popup Modal -->
+    <div id="about-modal" class="modal">
+      <div class="modal-content">
+        <button id="close-about-modal" class="modal-close" aria-label="Close About Popup" tabindex="0">&times;</button>
+        <h2>About The Watch Worthy</h2>
+        <p>
+Too many choices = no real choice.
+It's the Paradox of Choice—more options, more overwhelm.
+
+The Watch Worthy fixes that.
+No feed. No distractions. Just one exceptional video every time you click blue button.
+
+Curated from creators like Kurzgesagt, CGP Grey, and Branch Education, each video fuels curiosity and helps you grow.
+
+One click. One great video. That's it.
+        </p>
+      </div>
+    </div>
+
+    <!-- More Popup Modal -->
+    <div id="more-modal" class="modal">
+      <div class="modal-content">
+        <button id="close-more-modal" class="modal-close" aria-label="Close More Popup" tabindex="0">&times;</button>
+        <h2>More from Us</h2>
+        <p>
+For simple news join <a href="https://www.thream.com" target="_blank">Thream</a>.
+
+Love Quick intellectual YouTube videos suggestion? You might love our read suggestion <a href="https://www.thewatchworthy.com" target="_blank">The Watch Worthy</a>.
+
+Wanted to use latest AI tools and upskill yourself in your life and work life? Use <a href="https://www.superpowwwer.com" target="_blank">superpowwwer.com</a>.
+
+Wanted a peaceful environment that will hook you to what you are doing? Get <a href="https://h-o-o-k.com" target="_blank">H-O-O-K</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+    // Beehiiv popup logic
+    document.getElementById('subscribe-button').onclick = function() {
+      document.getElementById('beehiiv-modal').style.display = 'flex';
+    };
+    document.getElementById('close-beehiiv-modal').onclick = function() {
+      document.getElementById('beehiiv-modal').style.display = 'none';
+    };
+    // Optional: close modal when clicking outside the modal content
+    document.getElementById('beehiiv-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
